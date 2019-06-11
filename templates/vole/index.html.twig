@@ -1,0 +1,42 @@
+{% extends 'adminlayout.html.twig' %}
+
+
+{% block body %}
+    <h1>Vole index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Heurdepart</th>
+                <th>Heurearrive</th>
+                <th>Compagnie ID</th>
+                <th>Aeroport_depart</th>
+                <th>Aeroport_arrive</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vole in voles %}
+            <tr>
+                <td>{{ vole.id }}</td>
+                <td>{{ vole.heurdepart ? vole.heurdepart|date('H:i:s') : '' }}</td>
+                <td>{{ vole.heurearrive ? vole.heurearrive|date('H:i:s') : '' }}</td>
+                <td>{{ vole.compagnie.nom }}</td>
+                <td>{{ vole.aeroportDepart }}</td>
+                <td>{{ vole.aeroportArrive }}</td>
+                <td>
+                    <a href="{{ path('vole_show', {'id': vole.id}) }}">show</a>
+                    <a href="{{ path('vole_edit', {'id': vole.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('vole_new') }}">Create new</a>
+{% endblock %}

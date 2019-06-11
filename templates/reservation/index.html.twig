@@ -1,0 +1,38 @@
+{% extends 'adminlayout.html.twig' %}
+
+
+{% block body %}
+    <h1>Reservation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Numero de la reservation</th>
+                <th>Date reservation</th>
+                <th>Client</th>
+                <th>Vole</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.date | date('H:i:s') }}</td>
+                <td>{{ reservation.users.nom }}</td>
+                <td>{{ reservation.vole.id }}</td>
+                <td>
+                    <a href="{{ path('reservation_show', {'id': reservation.id}) }}">Détail</a>
+                    <a href="{{ path('reservation_delete', {'id': reservation.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

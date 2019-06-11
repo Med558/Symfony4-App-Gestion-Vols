@@ -1,0 +1,45 @@
+{% extends 'adminlayout.html.twig' %}
+
+
+{% block body %}
+    <h1>Compagnie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ compagnie.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ compagnie.nom }}</td>
+            </tr>
+            <tr>
+                <th>Origine</th>
+                <td>{{ compagnie.origine }}</td>
+            </tr>
+            <tr>
+                <th>Chiffredaffair</th>
+                <td>{{ compagnie.chiffredaffair }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ compagnie.description }}</td>
+            </tr>
+            <tr>
+                <th>Datecreation</th>
+                <td>{{ compagnie.datecreation }}</td>
+            </tr>
+            <tr>
+                <th>Logo</th>
+                <td>{{ compagnie.logo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('compagnie_index') }}">back to list</a>
+
+    <a href="{{ path('compagnie_edit', {'id': compagnie.id}) }}">edit</a>
+
+    {{ include('compagnie/_delete_form.html.twig') }}
+{% endblock %}
